@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>商品Agent - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>商品 Agent</h2>
+      <p>自动选择并调用 MCP 工具查询实时数据，生成可解释的经营结论</p>
+    </div>
+
+    <div class="ai-layout">
+      <div class="card ai-side">
+        <div class="card-head">
+          <div class="card-title">🧭 使用引导</div>
+          <button class="btn-text" id="clearBtn" type="button">清空对话</button>
+        </div>
+        <div class="card-body">
+          <div class="side-section-title">示例问题</div>
+          <div id="examples"></div>
+          <div class="side-section-title mt-16">Agent 能力</div>
+          <div class="form-hint" style="line-height:1.9;">
+            · 自动选择并调用 MCP 工具查询数据库<br>
+            · 覆盖商品、库存、订单、销售统计等场景<br>
+            · 工具调用过程可展开查看入参与结果<br>
+            · 未配置大模型 API Key 时降级为规则匹配
+          </div>
+        </div>
+      </div>
+
+      <div class="card ai-main" id="chatHost"></div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/agent.js"></script>
+</body>
+</html>

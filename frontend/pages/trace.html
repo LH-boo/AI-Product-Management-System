@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>调用链 - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>Agent 调用链</h2>
+      <p>查看 Agent 每次执行的完整链路：用户问题 → Agent → 工具调用 → 工具结果 → 最终回答</p>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <div class="card-title" style="font-size:15px;">🔗 调用记录</div>
+        <div class="spacer"></div>
+        <select class="form-control" id="limitSel">
+          <option value="20" selected>最近 20 条</option>
+          <option value="50">最近 50 条</option>
+          <option value="100">最近 100 条</option>
+        </select>
+        <button class="btn btn-default" id="refreshBtn" type="button">🔄 刷新</button>
+      </div>
+
+      <div class="trace-list">
+        <div class="trace-head" style="background:#f8fafc;cursor:default;font-weight:600;color:#64748b;">
+          <div>时间</div>
+          <div>用户问题</div>
+          <div class="t-agent">Agent</div>
+          <div class="t-tool">工具</div>
+          <div class="t-duration">耗时</div>
+          <div>状态</div>
+        </div>
+        <div id="traceList">
+          <div class="loading"><span class="spinner"></span>加载中...</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/trace.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div class="ai-float" id="aiFloat">
+  <div class="ai-float-panel" id="aiFloatPanel">
+    <div class="ai-float-header">
+      <span class="ai-float-title">🤖 AI 助手</span>
+      <div class="ai-mode-switch">
+        <button class="ai-mode active" data-mode="chat" type="button">普通问答</button>
+        <button class="ai-mode" data-mode="agent" type="button">Agent</button>
+      </div>
+      <button class="ai-float-close" id="aiFloatClose" type="button">&times;</button>
+    </div>
+    <div class="ai-float-body" id="aiFloatBody">
+      <div class="ai-msg ai-msg-bot">
+        <div class="ai-avatar">🤖</div>
+        <div class="ai-bubble">你好！我是 AI 商品管理助手，可以问我商品、库存、订单、售后等问题。</div>
+      </div>
+    </div>
+    <div class="ai-float-footer">
+      <textarea id="aiFloatInput" rows="1" placeholder="输入问题，回车发送..."></textarea>
+      <button class="btn btn-primary btn-sm" id="aiFloatSend" type="button">发送</button>
+    </div>
+  </div>
+  <button class="ai-float-btn" id="aiFloatBtn" type="button" title="AI 助手">🤖</button>
+</div>

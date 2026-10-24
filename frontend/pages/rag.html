@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAG知识库 - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>RAG 知识库</h2>
+      <p>知识文档上传、向量索引与检索测试</p>
+    </div>
+
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">📤 上传知识文档</div>
+        <span class="card-sub">仅支持 .txt / .md</span>
+      </div>
+      <div class="card-body">
+        <div class="rag-toolbar">
+          <select class="form-control" id="uploadCategory" style="min-width:170px;">
+            <option value="products">商品资料 (products)</option>
+            <option value="after_sale">售后政策 (after_sale)</option>
+            <option value="inventory">库存规则 (inventory)</option>
+            <option value="system">系统说明 (system)</option>
+          </select>
+          <input type="file" id="uploadFile" accept=".txt,.md" class="form-control" style="min-width:240px;">
+          <button class="btn btn-primary" id="uploadBtn" type="button">上传并索引</button>
+          <div class="spacer"></div>
+          <button class="btn btn-default" id="reindexBtn" type="button">🔄 重建索引</button>
+        </div>
+        <div class="form-hint mt-8">上传后会写入 knowledge 目录并做增量索引；「重建索引」会清空向量库后全量重新加载知识库目录。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">📚 知识文档列表</div>
+        <span class="card-sub" id="docCount"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>文档名称</th>
+              <th>分类</th>
+              <th>文本块数</th>
+              <th>向量数</th>
+              <th>状态</th>
+              <th>创建时间</th>
+            </tr>
+          </thead>
+          <tbody id="docTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">🔍 知识库测试</div>
+        <span class="card-sub">检索 Top K 结果与答案</span>
+      </div>
+      <div class="card-body">
+        <div class="rag-toolbar">
+          <input type="text" class="form-control" id="qInput" placeholder="输入问题，例如：库存预警线是怎么定义的？" style="flex:1;min-width:260px;">
+          <select class="form-control" id="topK" style="min-width:120px;">
+            <option value="3">Top 3</option>
+            <option value="4" selected>Top 4</option>
+            <option value="6">Top 6</option>
+            <option value="8">Top 8</option>
+          </select>
+          <button class="btn btn-primary" id="searchBtn" type="button">检索</button>
+        </div>
+        <div class="mt-16" id="answerBox" style="display:none;">
+          <div class="side-section-title">AI 答案</div>
+          <div class="ai-analysis-body" id="answerText"></div>
+        </div>
+        <div class="mt-16" id="resultsBox"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/rag.js"></script>
+</body>
+</html>

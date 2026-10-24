@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP工具 - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>MCP 工具中心</h2>
+      <p>查看商品 Agent 可用的 MCP 工具清单，并直接在页面上调试调用</p>
+    </div>
+
+    <div class="mcp-layout">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">🧰 工具清单</div>
+          <span class="card-sub" id="toolCount"></span>
+        </div>
+        <div class="tool-list" id="toolList">
+          <div class="loading"><span class="spinner"></span>加载中...</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" id="detailTitle">工具详情</div>
+          <span class="card-sub" id="detailName"></span>
+        </div>
+        <div class="card-body" id="detailBody">
+          <div class="empty">
+            <div class="empty-icon">🧰</div>
+            <div class="empty-text">请选择左侧工具查看参数并调用</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/mcp.js"></script>
+</body>
+</html>

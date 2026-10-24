@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>库存管理 - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/product.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>库存管理</h2>
+      <p>库存查询、入库 / 出库操作与库存预警</p>
+    </div>
+
+    <div class="chart-grid" style="grid-template-columns:repeat(auto-fit,minmax(360px,1fr));margin-bottom:16px;">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">📋 库存列表</div>
+          <span class="card-sub" id="invCount"></span>
+        </div>
+        <div class="toolbar" style="border-bottom:1px solid var(--border-light);">
+          <input type="text" class="form-control search-input" id="keyword" placeholder="商品名称 / SKU">
+          <select class="form-control" id="filterStatus">
+            <option value="">全部状态</option>
+            <option value="normal">正常</option>
+            <option value="warning">预警</option>
+            <option value="out_of_stock">缺货</option>
+            <option value="overstock">积压</option>
+          </select>
+          <button class="btn btn-primary" id="searchBtn" type="button">搜索</button>
+          <button class="btn btn-default" id="resetBtn" type="button">重置</button>
+          <div class="spacer"></div>
+          <button class="btn btn-success" id="inBtn" type="button">+ 入库</button>
+          <button class="btn btn-warning" id="outBtn" type="button">- 出库</button>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>商品</th>
+                <th>SKU</th>
+                <th>当前库存</th>
+                <th>安全库存</th>
+                <th>上限</th>
+                <th>仓库</th>
+                <th>状态</th>
+                <th>更新时间</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">⚠️ 库存预警专区</div>
+          <button class="btn btn-default btn-sm" id="warnRefreshBtn" type="button">刷新</button>
+        </div>
+        <div class="card-body">
+          <div class="warn-list" id="warnList"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/inventory.js"></script>
+</body>
+</html>

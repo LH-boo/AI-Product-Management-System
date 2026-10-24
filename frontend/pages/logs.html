@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>系统日志 - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>系统日志</h2>
+      <p>系统运行日志与 Agent 调用日志</p>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <select class="form-control" id="levelSel" style="min-width:140px;">
+          <option value="">全部等级</option>
+          <option value="INFO">INFO</option>
+          <option value="WARNING">WARNING</option>
+          <option value="ERROR">ERROR</option>
+        </select>
+        <input type="text" class="form-control search-input" id="kwInput" placeholder="搜索日志内容 / 模块">
+        <div class="spacer"></div>
+        <button class="btn btn-default" id="refreshBtn" type="button">🔄 刷新</button>
+      </div>
+
+      <div class="log-list">
+        <div class="log-item" style="background:#f8fafc;font-weight:600;color:#64748b;cursor:default;">
+          <div>等级</div>
+          <div>模块</div>
+          <div>时间</div>
+          <div>内容</div>
+        </div>
+        <div id="logList">
+          <div class="loading"><span class="spinner"></span>加载中...</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/logs.js"></script>
+</body>
+</html>

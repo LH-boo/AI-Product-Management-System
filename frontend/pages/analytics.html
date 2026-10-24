@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数据分析 - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>数据分析</h2>
+      <p>销售趋势、分类占比、热销排行与库存对比分析</p>
+    </div>
+
+    <div class="stat-grid" id="statGrid"></div>
+
+    <div class="chart-grid">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">📈 销售趋势</div>
+          <div class="ai-mode-switch" style="background:#eef2f7;">
+            <button class="range-btn page-btn active" data-days="7" type="button">7 天</button>
+            <button class="range-btn page-btn" data-days="15" type="button">15 天</button>
+            <button class="range-btn page-btn" data-days="30" type="button">30 天</button>
+          </div>
+        </div>
+        <div class="card-body"><div class="chart-box" id="trendChart"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div class="card-title">🥧 分类销售占比</div></div>
+        <div class="card-body"><div class="chart-box" id="categoryChart"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">🏆 热销商品排行</div>
+          <span class="card-sub">Top 5（按销量）</span>
+        </div>
+        <div class="card-body"><div class="chart-box" id="topChart"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">📊 库存分析</div>
+          <span class="card-sub">当前库存 vs 安全库存</span>
+        </div>
+        <div class="card-body"><div class="chart-box" id="inventoryChart"></div></div>
+      </div>
+    </div>
+
+    <div class="card ai-analysis-card">
+      <div class="card-head">
+        <div class="card-title">🤖 AI 经营分析</div>
+        <div class="ai-analysis-actions">
+          <button class="btn btn-primary btn-sm" id="aiAnalysisBtn" type="button">生成分析结论</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ai-analysis-body" id="aiAnalysisBody">
+          <span class="placeholder">点击「生成分析结论」，商品 Agent 会结合实时经营数据输出分析建议。</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>系统设置 - AI智能商品管理系统</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/ai.css">
+</head>
+<body>
+  <div id="app-layout"></div>
+
+  <main class="page-content">
+    <div class="page-header">
+      <h2>系统设置</h2>
+      <p>系统运行配置查看（配置项来自后端 .env，当前为只读展示）</p>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">🧩 基础信息</div>
+        <span class="tag tag-info" id="healthTag">检测中…</span>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-item">
+            <label>系统名称</label>
+            <div class="form-static" id="sAppName">-</div>
+          </div>
+          <div class="form-item">
+            <label>服务地址</label>
+            <div class="form-static">http://127.0.0.1:8000</div>
+          </div>
+          <div class="form-item">
+            <label>接口文档</label>
+            <div class="form-static"><a class="text-primary" href="/docs" target="_blank">http://127.0.0.1:8000/docs</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">🗄️ 数据库配置（MySQL）</div>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-item"><label>主机</label><div class="form-static" id="dbHost">-</div></div>
+          <div class="form-item"><label>端口</label><div class="form-static" id="dbPort">-</div></div>
+          <div class="form-item"><label>用户名</label><div class="form-static" id="dbUser">-</div></div>
+          <div class="form-item"><label>密码</label><div class="form-static" id="dbPwd">-</div></div>
+          <div class="form-item"><label>数据库</label><div class="form-static" id="dbName">-</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">🤖 大模型配置（LLM）</div>
+        <button class="btn btn-primary btn-sm" id="testLlmBtn" type="button">测试 LLM 连接</button>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-item"><label>Base URL</label><div class="form-static" id="llmBase">-</div></div>
+          <div class="form-item"><label>模型</label><div class="form-static" id="llmModel">-</div></div>
+          <div class="form-item"><label>温度 Temperature</label><div class="form-static" id="llmTemp">-</div></div>
+          <div class="form-item"><label>API Key</label><div class="form-static" id="llmKey">-</div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-item"><label>Embedding Base URL</label><div class="form-static" id="embBase">-</div></div>
+          <div class="form-item"><label>Embedding 模型</label><div class="form-static" id="embModel">-</div></div>
+        </div>
+        <div class="mt-8" id="llmTestBox" style="display:none;">
+          <div class="side-section-title">连接测试结果</div>
+          <div class="ai-analysis-body" id="llmTestText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">🧠 RAG 检索配置</div>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-item"><label>Top K</label><div class="form-static" id="ragTopK">-</div></div>
+          <div class="form-item"><label>分块大小 CHUNK_SIZE</label><div class="form-static" id="ragChunk">-</div></div>
+          <div class="form-item"><label>分块重叠 CHUNK_OVERLAP</label><div class="form-static" id="ragOverlap">-</div></div>
+          <div class="form-item"><label>向量集合</label><div class="form-static" id="ragCollection">-</div></div>
+        </div>
+        <div class="form-hint mt-8">修改配置请编辑项目根目录的 .env 文件并重启后端服务，页面仅作展示。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body flex-between">
+        <span class="form-hint">配置保存接口待后端补充，当前保存按钮仅做前端提示。</span>
+        <button class="btn btn-primary" id="saveBtn" type="button">保存设置</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/settings.js"></script>
+</body>
+</html>
